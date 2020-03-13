@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+        {% block seo %}{% endblock %}
+        <title>
+            {% block title %}{% endblock %} - {{ app_name }}
+        </title>
+        <link rel="apple-touch-icon" sizes="39x39" href="{{ asset("apple-touch-icon.png") }}">
+        <link rel="icon" type="image/png" sizes="39x39" href="{{ asset('favicon.png') }}">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.js"></script>
+        <link href="https://cdn.dhtmlx.com/gantt/edge/dhtmlxgantt.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('etc/main/css/main.css') }}">
+        {% stylesheets
+            'etc/ionicons/css/ionicons.min.css'
+            'etc//bootstrap-datepicker-1.9.0-dist/css/bootstrap-datepicker.min.css' 
+            
+            filter='cssrewrite' output='css/compiled/app.css'
+            %}
+            <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}       
+    
+    </head>
+    <body>
+        {% include "tools/navbar.html.twig" %}
+        {% block body %}{% endblock %}
+        {% include "tools/footer.html.twig" %}
+        
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{{ asset("etc/moment/moment.min.js") }}"></script>
+        <script src="{{ asset("etc/bootstrap-datepicker-1.9.0-dist/js/bootstrap-datepicker.min.js") }}" type="text/javascript"></script>        
+        <script src="{{ asset("etc/main/js/main.js") }}" type="text/javascript"></script>
+        {% block js %}
+        {% endblock %}
+    </body>
+
+    
+</html>

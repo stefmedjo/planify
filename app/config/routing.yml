@@ -1,0 +1,20 @@
+#main:
+#    resource: "@MainBundle/Resources/config/routing.yml"
+#    prefix:   /
+
+#user:
+#    resource: "@UserBundle/Resources/config/routing.yml"
+#    prefix:   /
+
+main:
+    resource: "@MainBundle/Controller/"
+    type: annotation
+    prefix: /u/
+
+user:
+    resource: "@UserBundle/Controller/"
+    type:   annotation
+
+app:
+    resource: "@AppBundle/Controller/"
+    type: annotation

@@ -1,0 +1,199 @@
+{% extends "templates/template.html.twig" %}
+{% block seo %}
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="{{ asset("etc/date/date.css") }}">
+{% endblock %}
+{% block wrapper %}
+    {% include "tools/admin_navbar.html.twig" %}
+        <div class="header-block pt-5 pb-5 mb-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-10 col-sm-12 fs-md">
+                {% block _title_ %}{% endblock %}
+              </div>
+              <div class="col-md-2 col-sm-12">
+                {% block _btns_ %}{% endblock %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% block body %}
+        {% endblock %}
+{% endblock %}
+{% block js %}
+  <script src="{{ asset("etc/date/date.js") }}" type="text/javascript"></script>
+  <script src="{{ asset("etc/main/js/main.js") }}" type="text/javascript"></script>
+{% endblock %}
+
+{#
+<!DOCTYPE html>
+<html lang="en" class="h100">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+
+    <title>
+      {% block title %}{% endblock %} - Administration Cible RH Emploi
+    </title>
+
+    {% stylesheets 
+        'etc/vendors/bootstrap/dist/css/bootstrap.min.css' 
+        'etc/vendors/font-awesome/css/font-awesome.min.css'
+        'etc/vendors/date/date.css'
+        'etc/vendors/nprogress/nprogress.css'
+        'etc/vendors/iCheck/skins/flat/green.css'
+        'etc/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css'
+        'etc/vendors/jqvmap/dist/jqvmap.min.css'
+        'etc/vendors/bootstrap-daterangepicker/daterangepicker.css'
+        'etc/vendors/custom.min.css'
+        'etc/vendors/main.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css">
+    {% endstylesheets %}
+  </head>
+
+  <body class="nav-md h100">
+    <div class="container body h100">
+      <div class="main_container h100">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="{{ path("admin_home") }}" class="site_title"><span>Cible RH Emploi</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+          <!--
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="{{ asset("etc/images/user.png") }}" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <h2>{{ app.user.email }}</h2>
+              </div>
+            </div>
+          -->
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="{{ path("admin_joboffer_list") }}">Offres d'emploi</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_article_list") }}">Articles</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_article_category_list") }}">Catégories d'articles</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_category_list") }}">Categories d'offres d'emplois</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_user_list") }}">Utilisateurs</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_company_list") }}">Entreprises</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_city_list") }}">Villes</a>
+                  </li>
+                  
+                  <li>
+                    <a href="{{ path("admin_contract_list") }}">Type de Contrat</a>
+                  </li>
+                  <li>
+                    <a href="{{ path("admin_metier_list") }}">Metier</a>
+                  </li>                  
+                </ul>
+              </div>
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="#" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <img src="{{ asset("etc/images/user.png") }}" alt="">
+                    {{ app.user.email }}
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="#"> Profile</a></li>
+                    <li>
+                      <a href="#">
+                        <span>Settings</span>
+                      </a>
+                    </li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#"> Déconnexion</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          
+          {% block body %}{% endblock %}
+
+        </div>
+        <!-- /page content -->
+      </div>
+    </div>
+
+    {% javascripts 
+        'etc/vendors/jquery/dist/jquery.min.js'  
+        'etc/vendors/bootstrap/dist/js/bootstrap.min.js' 
+        'etc/vendors/date/date.js'
+        'etc/main/js/main.js' 
+        'etc/vendors/fastclick/lib/fastclick.js'
+        'etc/vendors/nprogress/nprogress.js'
+        'etc/vendors/Chart.js/dist/Chart.min.js'
+        'etc/vendors/gauge.js/dist/gauge.min.js'
+        'etc/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js'
+        'etc/vendors/iCheck/icheck.min.js'
+        'etc/vendors/skycons/skycons.js'
+        'etc/vendors/DateJS/build/date.js'
+        'etc/vendors/bootstrap-daterangepicker/daterangepicker.js'
+
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+  </body>
+</html>
+#}
